@@ -17,10 +17,15 @@ let the AI summarize — with a **data-driven heat rating** that the AI cannot o
 }
 ```
 
-| Param | Type | Required | Notes |
-|---|---|---|---|
-| `ca` | string | yes | Contract address, `0x` + 40 hex (lowercase accepted) |
-| `chain` | string | no | Only `bsc` (default `bsc`) |
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr><th style="text-align:left;padding:6px 14px">Param</th><th style="text-align:left;padding:6px 14px">Type</th><th style="text-align:left;padding:6px 14px">Required</th><th style="text-align:left;padding:6px 14px">Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:6px 14px"><code>ca</code></td><td style="padding:6px 14px">string</td><td style="padding:6px 14px">yes</td><td style="padding:6px 14px">Contract address, <code>0x</code> + 40 hex (lowercase accepted)</td></tr>
+    <tr><td style="padding:6px 14px"><code>chain</code></td><td style="padding:6px 14px">string</td><td style="padding:6px 14px">no</td><td style="padding:6px 14px">Only <code>bsc</code> (default <code>bsc</code>)</td></tr>
+  </tbody>
+</table>
 
 Errors: bad CA format → `400` · not a token / unavailable → `404` · insufficient balance → `429`.
 
@@ -41,19 +46,29 @@ Errors: bad CA format → `400` · not a token / unavailable → `404` · insuff
 }
 ```
 
-| Field | Type | Notes |
-|---|---|---|
-| `tweets_count` | int | Mentions found by the search (up to 50 pulled) |
-| `max_views` / `total_views` | int | Top-10 tweet views |
-| `top_tweets` | array | Up to 5 items; `text` is clean (CA and links stripped server-side), `url` links to the original X post |
-| `ai_text` | string | Heat rating + one-line reason + ≤80-char summary + up to 3 key signals |
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr><th style="text-align:left;padding:6px 14px">Field</th><th style="text-align:left;padding:6px 14px">Type</th><th style="text-align:left;padding:6px 14px">Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:6px 14px"><code>tweets_count</code></td><td style="padding:6px 14px">int</td><td style="padding:6px 14px">Mentions found by the search (up to 50 pulled)</td></tr>
+    <tr><td style="padding:6px 14px"><code>max_views</code> / <code>total_views</code></td><td style="padding:6px 14px">int</td><td style="padding:6px 14px">Top-10 tweet views</td></tr>
+    <tr><td style="padding:6px 14px"><code>top_tweets</code></td><td style="padding:6px 14px">array</td><td style="padding:6px 14px">Up to 5 items; <code>text</code> is clean (CA and links stripped server-side), <code>url</code> links to the original X post</td></tr>
+    <tr><td style="padding:6px 14px"><code>ai_text</code></td><td style="padding:6px 14px">string</td><td style="padding:6px 14px">Heat rating + one-line reason + ≤80-char summary + up to 3 key signals</td></tr>
+  </tbody>
+</table>
 
 ## Heat rating — dual-channel thresholds, take the higher
 
-| | High 🔴 | Mid 🟡 | Low ⚪ |
-|---|---|---|---|
-| **X-tweet channel** | ≥10 mentions AND (15K+ total views OR 5K+ top view) | ≥15 mentions, OR (≥5 mentions AND (5K+ total views OR 1.5K+ top view)) | otherwise |
-| **On-chain channel** | 24h volume ≥ $5M, OR (market cap ≥ $5M AND 3K+ holders) | 24h volume ≥ $500K, OR market cap ≥ $500K, OR 1K+ holders | otherwise |
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr><th style="text-align:left;padding:6px 14px"></th><th style="text-align:left;padding:6px 14px">High 🔴</th><th style="text-align:left;padding:6px 14px">Mid 🟡</th><th style="text-align:left;padding:6px 14px">Low ⚪</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:6px 14px"><b>X-tweet channel</b></td><td style="padding:6px 14px">≥10 mentions AND (15K+ total views OR 5K+ top view)</td><td style="padding:6px 14px">≥15 mentions, OR (≥5 mentions AND (5K+ total views OR 1.5K+ top view))</td><td style="padding:6px 14px">otherwise</td></tr>
+    <tr><td style="padding:6px 14px"><b>On-chain channel</b></td><td style="padding:6px 14px">24h volume ≥ $5M, OR (market cap ≥ $5M AND 3K+ holders)</td><td style="padding:6px 14px">24h volume ≥ $500K, OR market cap ≥ $500K, OR 1K+ holders</td><td style="padding:6px 14px">otherwise</td></tr>
+  </tbody>
+</table>
 
 The higher of the two channels wins — a hot token with low tweet reach is no longer
 misjudged. The AI writes only the reason / summary / signals; the rating is fixed by the
@@ -78,28 +93,43 @@ data. Thresholds are configurable server-side.
 }
 ```
 
-| 参数 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| `ca` | string | 是 | 合约地址，`0x` + 40 位十六进制 |
-| `chain` | string | 否 | 仅 `bsc`（缺省即 bsc） |
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr><th style="text-align:left;padding:6px 14px">参数</th><th style="text-align:left;padding:6px 14px">类型</th><th style="text-align:left;padding:6px 14px">必填</th><th style="text-align:left;padding:6px 14px">说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:6px 14px"><code>ca</code></td><td style="padding:6px 14px">string</td><td style="padding:6px 14px">是</td><td style="padding:6px 14px">合约地址，<code>0x</code> + 40 位十六进制</td></tr>
+    <tr><td style="padding:6px 14px"><code>chain</code></td><td style="padding:6px 14px">string</td><td style="padding:6px 14px">否</td><td style="padding:6px 14px">仅 <code>bsc</code>（缺省即 bsc）</td></tr>
+  </tbody>
+</table>
 
 错误：CA 格式错误 → `400` · 非代币或暂不可用 → `404` · 余额不足 → `429`。
 
 ### 响应字段
 
-| 字段 | 类型 | 说明 |
-|---|---|---|
-| `tweets_count` | int | 搜索到的提及推文数（最多拉取 50 条） |
-| `max_views` / `total_views` | int | top10 推文的最高 / 总阅读量 |
-| `top_tweets` | array | 最多 5 条；`text` 已净化（服务端去除 CA 与链接），`url` 直达 X 原帖 |
-| `ai_text` | string | 热度评级 + 一句话理由 + ≤80 字摘要 + 至多 3 条关键信号 |
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr><th style="text-align:left;padding:6px 14px">字段</th><th style="text-align:left;padding:6px 14px">类型</th><th style="text-align:left;padding:6px 14px">说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:6px 14px"><code>tweets_count</code></td><td style="padding:6px 14px">int</td><td style="padding:6px 14px">搜索到的提及推文数（最多拉取 50 条）</td></tr>
+    <tr><td style="padding:6px 14px"><code>max_views</code> / <code>total_views</code></td><td style="padding:6px 14px">int</td><td style="padding:6px 14px">top10 推文的最高 / 总阅读量</td></tr>
+    <tr><td style="padding:6px 14px"><code>top_tweets</code></td><td style="padding:6px 14px">array</td><td style="padding:6px 14px">最多 5 条；<code>text</code> 已净化（服务端去除 CA 与链接），<code>url</code> 直达 X 原帖</td></tr>
+    <tr><td style="padding:6px 14px"><code>ai_text</code></td><td style="padding:6px 14px">string</td><td style="padding:6px 14px">热度评级 + 一句话理由 + ≤80 字摘要 + 至多 3 条关键信号</td></tr>
+  </tbody>
+</table>
 
 ### 热度评级 —— 双通道阈值，取高
 
-| | 高 🔴 | 中 🟡 | 低 ⚪ |
-|---|---|---|---|
-| **X 推文通道** | 提及 ≥10 且（总阅读 ≥15K 或单条 ≥5K） | 提及 ≥15，或（提及 ≥5 且（总阅读 ≥5K 或单条 ≥1.5K）） | 其余 |
-| **链上通道** | 24h 成交 ≥$5M，或（市值 ≥$5M 且持有人 ≥3K） | 成交 ≥$500K，或市值 ≥$500K，或持有人 ≥1K | 其余 |
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr><th style="text-align:left;padding:6px 14px"></th><th style="text-align:left;padding:6px 14px">高 🔴</th><th style="text-align:left;padding:6px 14px">中 🟡</th><th style="text-align:left;padding:6px 14px">低 ⚪</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:6px 14px"><b>X 推文通道</b></td><td style="padding:6px 14px">提及 ≥10 且（总阅读 ≥15K 或单条 ≥5K）</td><td style="padding:6px 14px">提及 ≥15，或（提及 ≥5 且（总阅读 ≥5K 或单条 ≥1.5K））</td><td style="padding:6px 14px">其余</td></tr>
+    <tr><td style="padding:6px 14px"><b>链上通道</b></td><td style="padding:6px 14px">24h 成交 ≥$5M，或（市值 ≥$5M 且持有人 ≥3K）</td><td style="padding:6px 14px">成交 ≥$500K，或市值 ≥$500K，或持有人 ≥1K</td><td style="padding:6px 14px">其余</td></tr>
+  </tbody>
+</table>
 
 两通道取高——链上热但推文阅读量低的币不会被误判。AI 只写理由 / 摘要 / 信号，评级由数据
 锁定；阈值可在服务端配置调整。

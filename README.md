@@ -18,19 +18,24 @@ programs. This repo is the open, versioned contract behind the live docs at
 
 ## 📚 Documentation
 
-| File | Contents | Status |
-|---|---|---|
-| [getting-started.md](getting-started.md) | Get a key → first call (curl / Python / JS) | 🔨 in progress |
-| [authentication.md](authentication.md) | `X-API-Key`, 401 / 429, top-up packs, key rotation | 🔨 in progress |
-| [billing.md](billing.md) | Master deduction table, cache-hit rules, 422 / 500 semantics | 🔨 in progress |
-| [token-api.md](token-api.md) | Aggregation / listings / trade stream / signals / wallet | 🔨 in progress |
-| [twitter-api.md](twitter-api.md) | 12 tweet endpoints, pagination billing | 🔨 in progress |
-| [translate-api.md](translate-api.md) | translate / summarize, Chinese-input free | 🔨 in progress |
-| [sentiment-api.md](sentiment-api.md) | CA sentiment scan, dual-channel heat rating | 🔨 in progress |
-| [field-dictionary.md](field-dictionary.md) | Field-level dictionary: source, nullability, category, billing | ⏳ planned |
-| [errors.md](errors.md) | Error codes, retry backoff | 🔨 in progress |
-| [rate-limits.md](rate-limits.md) | Scheduling tiers, burst buffer | ⏳ planned |
-| [changelog.md](changelog.md) | API version history | ⏳ planned |
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr><th style="text-align:left;padding:6px 14px">File</th><th style="text-align:left;padding:6px 14px">Contents</th><th style="text-align:left;padding:6px 14px">Status</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:6px 14px"><a href="getting-started.md">getting-started.md</a></td><td style="padding:6px 14px">Get a key → first call (curl / Python / JS)</td><td style="padding:6px 14px">🔨 in progress</td></tr>
+    <tr><td style="padding:6px 14px"><a href="authentication.md">authentication.md</a></td><td style="padding:6px 14px"><code>X-API-Key</code>, 401 / 429, top-up packs, key rotation</td><td style="padding:6px 14px">🔨 in progress</td></tr>
+    <tr><td style="padding:6px 14px"><a href="billing.md">billing.md</a></td><td style="padding:6px 14px">Master deduction table, cache-hit rules, 422 / 500 semantics</td><td style="padding:6px 14px">✅ done</td></tr>
+    <tr><td style="padding:6px 14px"><a href="token-api.md">token-api.md</a></td><td style="padding:6px 14px">Aggregation / listings / trade stream / signals / wallet</td><td style="padding:6px 14px">🔨 in progress</td></tr>
+    <tr><td style="padding:6px 14px"><a href="twitter-api.md">twitter-api.md</a></td><td style="padding:6px 14px">12 tweet endpoints, pagination billing</td><td style="padding:6px 14px">🔨 in progress</td></tr>
+    <tr><td style="padding:6px 14px"><a href="translate-api.md">translate-api.md</a></td><td style="padding:6px 14px">translate / summarize, Chinese-input free</td><td style="padding:6px 14px">🔨 in progress</td></tr>
+    <tr><td style="padding:6px 14px"><a href="sentiment-api.md">sentiment-api.md</a></td><td style="padding:6px 14px">CA sentiment scan, dual-channel heat rating</td><td style="padding:6px 14px">✅ done</td></tr>
+    <tr><td style="padding:6px 14px"><a href="field-dictionary.md">field-dictionary.md</a></td><td style="padding:6px 14px">Field-level dictionary: source, nullability, category, billing</td><td style="padding:6px 14px">⏳ planned</td></tr>
+    <tr><td style="padding:6px 14px"><a href="errors.md">errors.md</a></td><td style="padding:6px 14px">Error codes, retry backoff</td><td style="padding:6px 14px">✅ done</td></tr>
+    <tr><td style="padding:6px 14px"><a href="rate-limits.md">rate-limits.md</a></td><td style="padding:6px 14px">Scheduling tiers, burst buffer</td><td style="padding:6px 14px">⏳ planned</td></tr>
+    <tr><td style="padding:6px 14px"><a href="changelog.md">changelog.md</a></td><td style="padding:6px 14px">API version history</td><td style="padding:6px 14px">⏳ planned</td></tr>
+  </tbody>
+</table>
 
 ## 🚀 Quick Start
 
@@ -76,19 +81,24 @@ TGTC 不是共识层，也不是喊单引擎。它是 **BSC 高频 meme 场景�
 
 ### 文档目录
 
-| 文件 | 内容 | 状态 |
-|---|---|---|
-| [getting-started.md](getting-started.md) | 拿 Key → 第一次调用（curl / Python / JS） | 🔨 编写中 |
-| [authentication.md](authentication.md) | `X-API-Key`、401 / 429、充值包、Key 轮换 | 🔨 编写中 |
-| [billing.md](billing.md) | 全接口扣费总表、缓存命中规则、422 / 500 口径 | 🔨 编写中 |
-| [token-api.md](token-api.md) | 聚合 / 榜单 / 交易流 / 信号流 / 钱包 | 🔨 编写中 |
-| [twitter-api.md](twitter-api.md) | 推特 12 端点、翻页计费 | 🔨 编写中 |
-| [translate-api.md](translate-api.md) | translate / summarize、中文免调 | 🔨 编写中 |
-| [sentiment-api.md](sentiment-api.md) | CA 舆情扫描、双通道热度评级 | 🔨 编写中 |
-| [field-dictionary.md](field-dictionary.md) | 字段级字典：来源 / 可空 / 分类 / 扣次 | ⏳ 待建 |
-| [errors.md](errors.md) | 错误码表、重试退避 | 🔨 编写中 |
-| [rate-limits.md](rate-limits.md) | 调度等级、突发缓冲 | ⏳ 待建 |
-| [changelog.md](changelog.md) | API 版本历史 | ⏳ 待建 |
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr><th style="text-align:left;padding:6px 14px">文件</th><th style="text-align:left;padding:6px 14px">内容</th><th style="text-align:left;padding:6px 14px">状态</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:6px 14px"><a href="getting-started.md">getting-started.md</a></td><td style="padding:6px 14px">拿 Key → 第一次调用（curl / Python / JS）</td><td style="padding:6px 14px">🔨 编写中</td></tr>
+    <tr><td style="padding:6px 14px"><a href="authentication.md">authentication.md</a></td><td style="padding:6px 14px"><code>X-API-Key</code>、401 / 429、充值包、Key 轮换</td><td style="padding:6px 14px">🔨 编写中</td></tr>
+    <tr><td style="padding:6px 14px"><a href="billing.md">billing.md</a></td><td style="padding:6px 14px">全接口扣费总表、缓存命中规则、422 / 500 口径</td><td style="padding:6px 14px">✅ 完成</td></tr>
+    <tr><td style="padding:6px 14px"><a href="token-api.md">token-api.md</a></td><td style="padding:6px 14px">聚合 / 榜单 / 交易流 / 信号流 / 钱包</td><td style="padding:6px 14px">🔨 编写中</td></tr>
+    <tr><td style="padding:6px 14px"><a href="twitter-api.md">twitter-api.md</a></td><td style="padding:6px 14px">推特 12 端点、翻页计费</td><td style="padding:6px 14px">🔨 编写中</td></tr>
+    <tr><td style="padding:6px 14px"><a href="translate-api.md">translate-api.md</a></td><td style="padding:6px 14px">translate / summarize、中文免调</td><td style="padding:6px 14px">🔨 编写中</td></tr>
+    <tr><td style="padding:6px 14px"><a href="sentiment-api.md">sentiment-api.md</a></td><td style="padding:6px 14px">CA 舆情扫描、双通道热度评级</td><td style="padding:6px 14px">✅ 完成</td></tr>
+    <tr><td style="padding:6px 14px"><a href="field-dictionary.md">field-dictionary.md</a></td><td style="padding:6px 14px">字段级字典：来源 / 可空 / 分类 / 扣次</td><td style="padding:6px 14px">⏳ 待建</td></tr>
+    <tr><td style="padding:6px 14px"><a href="errors.md">errors.md</a></td><td style="padding:6px 14px">错误码表、重试退避</td><td style="padding:6px 14px">✅ 完成</td></tr>
+    <tr><td style="padding:6px 14px"><a href="rate-limits.md">rate-limits.md</a></td><td style="padding:6px 14px">调度等级、突发缓冲</td><td style="padding:6px 14px">⏳ 待建</td></tr>
+    <tr><td style="padding:6px 14px"><a href="changelog.md">changelog.md</a></td><td style="padding:6px 14px">API 版本历史</td><td style="padding:6px 14px">⏳ 待建</td></tr>
+  </tbody>
+</table>
 
 ### 快速开始
 
