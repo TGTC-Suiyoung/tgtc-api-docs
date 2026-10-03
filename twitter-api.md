@@ -43,10 +43,23 @@ List endpoints (`followers` / `followings`) and deep search cost real money when
 every page bills **5 credits** and never hits cache. **100k results ≈ 15,000 credits** — estimate
 the volume before pulling.
 
-## Response
+## Response contract
 
-JSON with neutralized fields (no platform names / internal fingerprints). Deleted tweets or
-unknown users → `404`. See [errors.md](errors.md) for the full contract.
+**Tweet object** (element of `tweets` arrays) — always present, missing → `null`:
+
+`id` string · `text` string（前 500 字）· `created_at` string (UTC) · `author` object
+（`id / username / name / verified`）· `retweet_count` / `like_count` / `reply_count` /
+`quote_count` / `view_count` number · `language` string · `media` object[]（至多 4 个，
+仅 `type / duration_ms`，不暴露原站 CDN 链接）· `url` string
+
+**User object** (`user.info`) — `id / username / name / bio / bio_link / location / protected /
+verified / blue_verified / verified_type / verified_category / followers_count /
+following_count / tweets_count / media_count / likes_count / created_at / can_dm /
+is_automated / automated_by / pinned_tweet_ids / website`
+
+**List responses** carry a `pagination` segment (cursor) — a new `cursor` is a new request
+(5 credits, no cache hit). Deleted tweets / unknown users → `404`. Fields are neutralized
+(no platform names, no CDN links, no internal fingerprints).
 
 ---
 
@@ -84,6 +97,17 @@ unknown users → `404`. See [errors.md](errors.md) for the full contract.
 列表类（followers / followings）与深翻搜索按页计费：**每页 5 次**、永不命中缓存。
 **10 万条结果 ≈ 15,000 次**——拉取前先评估量级。
 
-### 响应
+### 响应契约
 
-JSON 字段已中性化（不含平台名 / 内部指纹）。推文已删 / 用户不存在 → `404`；完整错误契约见 [errors.md](errors.md)。
+**推文对象**（tweets 数组元素，恒定字段、缺值 null）：
+
+`id` string · `text` string（前 500 字）· `created_at` string（UTC）· `author` object（`id / username / name / verified`）·
+`retweet_count` / `like_count` / `reply_count` / `quote_count` / `view_count` number · `language` string ·
+`media` object[]（至多 4 个，仅 `type / duration_ms`，不暴露原站 CDN 链接）· `url` string
+
+**用户对象**（user.info）：`id / username / name / bio / bio_link / location / protected / verified /
+blue_verified / verified_type / verified_category / followers_count / following_count / tweets_count /
+media_count / likes_count / created_at / can_dm / is_automated / automated_by / pinned_tweet_ids / website`
+
+**列表响应**统一携带 `pagination` 段（cursor 翻页）——新 cursor = 新请求（5 次、不命中缓存）。
+推文已删 / 用户不存在 → `404`。字段已中性化（无平台名、无 CDN 链接、无内部指纹）。

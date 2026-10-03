@@ -127,6 +127,15 @@ each signal carries a full trigger-time token snapshot.
 
 30s cache · 422 on unknown action never deducts.
 
+## Item field contracts
+
+Every list endpoint returns a stable item contract — fields always present, missing → `null`,
+field names never change. Complete field lists: see [field-dictionary.md](field-dictionary.md)
+(listings 60 · trade records 26 · signals 45 · wallet profile 34 · wallet activity 17 ·
+wallet created 17 · wallet balance 6). Key invariants: `tx_hash` (trades/activity) and
+`address` (signals) survive field pruning; maker labels are neutralized; `kol_buyers`
+carries no CDN fields.
+
 ---
 
 ## 中文说明 · 代币数据 API
@@ -161,3 +170,9 @@ trending：`kind` = new / launch / graduating · `limit` 1~100；hot：`interval
 
 `profile` 2 次（33 字段画像）/ `stats` / `profits` / `activity` / `created` / `balance` 各 1 次。
 参数：`wallet`（必填）、`period`（1d/7d/30d）、`limit` / `cursor`（翻页）、`token`（balance 必填）。30s 缓存；未知 action 422 不扣次。
+
+### Item 字段契约
+
+所有列表端点返回稳定 item 契约——字段恒定输出（缺值 null）、字段名永不改变。完整字段清单见
+[field-dictionary.md](field-dictionary.md)（榜单 60 · 交易 26 · 信号 45 · 钱包画像 34 · 钱包流水 17 · 发币 17 · 余额 6）。
+关键约定：`tx_hash`（交易/流水）与 `address`（信号）裁剪时恒保留；maker 标签已中性化；`kol_buyers` 不含 CDN 字段。
