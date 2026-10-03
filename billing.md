@@ -11,7 +11,7 @@ already consumed); insufficient balance returns **429**.
 
 <table style="width:100%;border-collapse:collapse">
   <thead>
-    <tr><th style="text-align:left;padding:8px 16px;white-space:nowrap">Endpoint</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">Per call</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">Cache hit</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">Notes</th></tr>
+    <tr><th style="text-align:left;padding:8px 16px;white-space:nowrap;width:40%">Endpoint</th><th style="text-align:left;padding:8px 16px;white-space:nowrap;width:9%">Per call</th><th style="text-align:left;padding:8px 16px;white-space:nowrap;width:11%">Cache hit</th><th style="text-align:left;padding:8px 16px;white-space:nowrap;width:40%">Notes</th></tr>
   </thead>
   <tbody>
     <tr><td style="padding:8px 16px;white-space:nowrap">Token aggregation <code>POST /api/v1/aggregation/token</code></td><td style="padding:8px 16px;white-space:nowrap"><code>2+</code></td><td style="padding:8px 16px;white-space:nowrap">0 (10s)</td><td style="padding:8px 16px;white-space:nowrap">basic 1 + security 1; structure free</td></tr>
@@ -58,7 +58,7 @@ already consumed); insufficient balance returns **429**.
 
 <table style="width:100%;border-collapse:collapse">
   <thead>
-    <tr><th style="text-align:left;padding:8px 16px;white-space:nowrap">接口</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">每次扣次</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">缓存命中</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">说明</th></tr>
+    <tr><th style="text-align:left;padding:8px 16px;white-space:nowrap;width:40%">接口</th><th style="text-align:left;padding:8px 16px;white-space:nowrap;width:9%">每次扣次</th><th style="text-align:left;padding:8px 16px;white-space:nowrap;width:11%">缓存命中</th><th style="text-align:left;padding:8px 16px;white-space:nowrap;width:40%">说明</th></tr>
   </thead>
   <tbody>
     <tr><td style="padding:8px 16px;white-space:nowrap">代币聚合 <code>POST /api/v1/aggregation/token</code></td><td style="padding:8px 16px;white-space:nowrap"><code>2 起</code></td><td style="padding:8px 16px;white-space:nowrap">10s 内 0 次</td><td style="padding:8px 16px;white-space:nowrap">basic 1 + security 1；structure 免费</td></tr>
