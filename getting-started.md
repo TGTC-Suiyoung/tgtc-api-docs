@@ -13,6 +13,9 @@ Five minutes from zero to your first API call.
 
 ## 2. Make your first call
 
+> **Prefer the SDK?** Python developers should skip raw HTTP — `pip install tgtc-sdk`,
+> one method per endpoint, billing numbers on the result. See [sdk-python.md](sdk-python.md).
+
 ```bash
 curl -s -X POST https://www.tgtcbot.com/api/v1/aggregation/token \
   -H "Content-Type: application/json" -H "X-API-Key: sk_live_..." \
@@ -70,6 +73,9 @@ console.log(d.price, d.mcap, d.honeypot);
 4. 新用户注册赠送 **500 次**——先免费试完所有端点再付费
 
 ### 2. 第一次调用
+
+> **更推荐用 SDK？** Python 开发者不用手拼 HTTP——`pip install tgtc-sdk`，一个端点一个方法，
+> 计费数字直接挂在返回对象上。见 [sdk-python.md](sdk-python.md)。
 
 ```bash
 curl -s -X POST https://www.tgtcbot.com/api/v1/aggregation/token \

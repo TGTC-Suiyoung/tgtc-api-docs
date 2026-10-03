@@ -24,6 +24,7 @@ programs. This repo is the open, versioned contract behind the live docs at
   </thead>
   <tbody>
     <tr><td style="padding:6px 14px"><a href="getting-started.md">getting-started.md</a></td><td style="padding:6px 14px">Get a key → first call (curl / Python / JS)</td><td style="padding:6px 14px">✅ done</td></tr>
+    <tr><td style="padding:6px 14px"><a href="sdk-python.md">sdk-python.md</a></td><td style="padding:6px 14px">Official Python SDK: install, endpoints, transparent billing</td><td style="padding:6px 14px">✅ done</td></tr>
     <tr><td style="padding:6px 14px"><a href="authentication.md">authentication.md</a></td><td style="padding:6px 14px"><code>X-API-Key</code>, 401 / 429, top-up packs, key rotation</td><td style="padding:6px 14px">✅ done</td></tr>
     <tr><td style="padding:6px 14px"><a href="billing.md">billing.md</a></td><td style="padding:6px 14px">Master deduction table, cache-hit rules, 422 / 500 semantics</td><td style="padding:6px 14px">✅ done</td></tr>
     <tr><td style="padding:6px 14px"><a href="token-api.md">token-api.md</a></td><td style="padding:6px 14px">Aggregation / listings / trade stream / signals / wallet</td><td style="padding:6px 14px">✅ done</td></tr>
@@ -55,6 +56,7 @@ curl -s -X POST https://www.tgtcbot.com/api/v1/aggregation/token \
 
 ## 🔗 Related
 
+- **Python SDK (open source):** [TGTC-Suiyoung/tgtc-sdk-python](https://github.com/TGTC-Suiyoung/tgtc-sdk-python)
 - **Extension (open source):** [TGTC-Suiyoung/tgtc-extension](https://github.com/TGTC-Suiyoung/tgtc-extension)
 - **Live site:** https://www.tgtcbot.com
 - **Status:** https://www.tgtcbot.com/status.zh.html
@@ -90,6 +92,7 @@ TGTC 不是共识层，也不是喊单引擎。它是 **BSC 高频 meme 场景�
   </thead>
   <tbody>
     <tr><td style="padding:6px 14px"><a href="getting-started.md">getting-started.md</a></td><td style="padding:6px 14px">拿 Key → 第一次调用（curl / Python / JS）</td><td style="padding:6px 14px">✅ 完成</td></tr>
+    <tr><td style="padding:6px 14px"><a href="sdk-python.md">sdk-python.md</a></td><td style="padding:6px 14px">官方 Python SDK：安装 / 端点 / 计费透明</td><td style="padding:6px 14px">✅ 完成</td></tr>
     <tr><td style="padding:6px 14px"><a href="authentication.md">authentication.md</a></td><td style="padding:6px 14px"><code>X-API-Key</code>、401 / 429、充值包、Key 轮换</td><td style="padding:6px 14px">✅ 完成</td></tr>
     <tr><td style="padding:6px 14px"><a href="billing.md">billing.md</a></td><td style="padding:6px 14px">全接口扣费总表、缓存命中规则、422 / 500 口径</td><td style="padding:6px 14px">✅ 完成</td></tr>
     <tr><td style="padding:6px 14px"><a href="token-api.md">token-api.md</a></td><td style="padding:6px 14px">聚合 / 榜单 / 交易流 / 信号流 / 钱包</td><td style="padding:6px 14px">✅ 完成</td></tr>
@@ -120,6 +123,7 @@ TGTC 不是共识层，也不是喊单引擎。它是 **BSC 高频 meme 场景�
 
 ### 相关链接
 
+- **Python SDK（开源）**：[TGTC-Suiyoung/tgtc-sdk-python](https://github.com/TGTC-Suiyoung/tgtc-sdk-python)
 - **浏览器扩展（开源）**：[TGTC-Suiyoung/tgtc-extension](https://github.com/TGTC-Suiyoung/tgtc-extension)
 - **官网**：https://www.tgtcbot.com
 - **服务状态**：https://www.tgtcbot.com/status.zh.html
