@@ -66,6 +66,7 @@ curl -s -X POST https://www.tgtcbot.com/api/v1/aggregation/token \
   internal pipelines, or supplier names.
 - **Stable contract:** field names never change once released; missing values return `null`.
 - **Billing truth:** every number in this repo mirrors what the service actually deducts.
+- **Concise commits:** commit titles stay short — one clear topic per commit.
 
 ## 📄 License
 
@@ -115,6 +116,7 @@ TGTC 不是共识层，也不是喊单引擎。它是 **BSC 高频 meme 场景�
 - **黑盒原则**：只写对外契约——端点路径 / 请求响应字段 / 计费 / 错误码；**不描述任何上游数据源、内部管线或供应商名称**。
 - **稳定契约**：已发布字段名永不改变；缺值返回 `null`。
 - **计费真相**：本仓库每个数字与服务实际扣次严格一致（以服务端配置为准）。
+- **简洁提交**：commit 标题保持简短，一个主题一个提交。
 
 ### 相关链接
 
