@@ -9,17 +9,22 @@ already consumed); insufficient balance returns **429**.
 
 ## Deduction master table
 
-| Endpoint | Per call | Cache hit | Notes |
-|---|---|---|---|
-| Token aggregation `POST /api/v1/aggregation/token` | `2+` | 0 (10s) | basic 1 + security 1; structure free |
-| Listings `POST /api/v1/token/trending` · `hot` | `1` | 0 (120s) | — |
-| Trade stream `POST /api/v1/track/trades` | `1` | 0 (15s) | smartmoney / kol |
-| Signal stream `POST /api/v1/market/signals` | `1` | 0 (30s) | 21 signal types |
-| Wallet `POST /api/v1/wallet/{action}` | `2 / 1` | 0 (30s) | profile 2; others 1 |
-| CA sentiment `POST /api/v1/twitter/sentiment` | `10` | 0 (600s) | search + AI |
-| Twitter `POST /api/v1/twitter/{action}` | `5` | 0 (120s) | 12 endpoints; pagination 5/page |
-| Translate `POST /api/v1/translate/{action}` | `3` | 0 (300s) | Chinese input free |
-| Bot `/checkX` · `/check` | `4+` | — | on-chain 4; +twitter/translate |
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr><th style="text-align:left;padding:8px 16px;white-space:nowrap">Endpoint</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">Per call</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">Cache hit</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:8px 16px;white-space:nowrap">Token aggregation <code>POST /api/v1/aggregation/token</code></td><td style="padding:8px 16px;white-space:nowrap"><code>2+</code></td><td style="padding:8px 16px;white-space:nowrap">0 (10s)</td><td style="padding:8px 16px;white-space:nowrap">basic 1 + security 1; structure free</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">Listings <code>POST /api/v1/token/trending</code> · <code>hot</code></td><td style="padding:8px 16px;white-space:nowrap"><code>1</code></td><td style="padding:8px 16px;white-space:nowrap">0 (120s)</td><td style="padding:8px 16px;white-space:nowrap">—</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">Trade stream <code>POST /api/v1/track/trades</code></td><td style="padding:8px 16px;white-space:nowrap"><code>1</code></td><td style="padding:8px 16px;white-space:nowrap">0 (15s)</td><td style="padding:8px 16px;white-space:nowrap">smartmoney / kol</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">Signal stream <code>POST /api/v1/market/signals</code></td><td style="padding:8px 16px;white-space:nowrap"><code>1</code></td><td style="padding:8px 16px;white-space:nowrap">0 (30s)</td><td style="padding:8px 16px;white-space:nowrap">21 signal types</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">Wallet <code>POST /api/v1/wallet/{action}</code></td><td style="padding:8px 16px;white-space:nowrap"><code>2 / 1</code></td><td style="padding:8px 16px;white-space:nowrap">0 (30s)</td><td style="padding:8px 16px;white-space:nowrap">profile 2; others 1</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">CA sentiment <code>POST /api/v1/twitter/sentiment</code></td><td style="padding:8px 16px;white-space:nowrap"><code>10</code></td><td style="padding:8px 16px;white-space:nowrap">0 (600s)</td><td style="padding:8px 16px;white-space:nowrap">search + AI</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">Twitter <code>POST /api/v1/twitter/{action}</code></td><td style="padding:8px 16px;white-space:nowrap"><code>5</code></td><td style="padding:8px 16px;white-space:nowrap">0 (120s)</td><td style="padding:8px 16px;white-space:nowrap">12 endpoints; pagination 5/page</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">Translate <code>POST /api/v1/translate/{action}</code></td><td style="padding:8px 16px;white-space:nowrap"><code>3</code></td><td style="padding:8px 16px;white-space:nowrap">0 (300s)</td><td style="padding:8px 16px;white-space:nowrap">Chinese input free</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">Bot <code>/checkX</code> · <code>/check</code></td><td style="padding:8px 16px;white-space:nowrap"><code>4+</code></td><td style="padding:8px 16px;white-space:nowrap">—</td><td style="padding:8px 16px;white-space:nowrap">on-chain 4; +twitter/translate</td></tr>
+  </tbody>
+</table>
 
 **Notes detail**
 
@@ -51,17 +56,22 @@ already consumed); insufficient balance returns **429**.
 
 ### 扣费总表
 
-| 接口 | 每次扣次 | 缓存命中 | 说明 |
-|---|---|---|---|
-| 代币聚合 `POST /api/v1/aggregation/token` | `2 起` | 10s 内 0 次 | basic 1 + security 1；structure 免费 |
-| 榜单 `POST /api/v1/token/trending` · `hot` | `1` | 120s 内 0 次 | — |
-| 交易流 `POST /api/v1/track/trades` | `1` | 15s 内 0 次 | smartmoney / kol |
-| 信号流 `POST /api/v1/market/signals` | `1` | 30s 内 0 次 | 21 种信号 |
-| 钱包 `POST /api/v1/wallet/{action}` | `2 / 1` | 30s 内 0 次 | profile 2；其余各 1 |
-| CA 舆情 `POST /api/v1/twitter/sentiment` | `10` | 600s 内 0 次 | 搜索 + AI 分析 |
-| 推特 `POST /api/v1/twitter/{action}` | `5` | 120s 内 0 次 | 12 端点统一；翻页每页 5 |
-| 翻译 `POST /api/v1/translate/{action}` | `3` | 300s 内 0 次 | 中文输入免调 |
-| Bot `/checkX` · `/check` | `4 起` | — | 链上 4；含推特/翻译按实际叠加 |
+<table style="width:100%;border-collapse:collapse">
+  <thead>
+    <tr><th style="text-align:left;padding:8px 16px;white-space:nowrap">接口</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">每次扣次</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">缓存命中</th><th style="text-align:left;padding:8px 16px;white-space:nowrap">说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="padding:8px 16px;white-space:nowrap">代币聚合 <code>POST /api/v1/aggregation/token</code></td><td style="padding:8px 16px;white-space:nowrap"><code>2 起</code></td><td style="padding:8px 16px;white-space:nowrap">10s 内 0 次</td><td style="padding:8px 16px;white-space:nowrap">basic 1 + security 1；structure 免费</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">榜单 <code>POST /api/v1/token/trending</code> · <code>hot</code></td><td style="padding:8px 16px;white-space:nowrap"><code>1</code></td><td style="padding:8px 16px;white-space:nowrap">120s 内 0 次</td><td style="padding:8px 16px;white-space:nowrap">—</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">交易流 <code>POST /api/v1/track/trades</code></td><td style="padding:8px 16px;white-space:nowrap"><code>1</code></td><td style="padding:8px 16px;white-space:nowrap">15s 内 0 次</td><td style="padding:8px 16px;white-space:nowrap">smartmoney / kol</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">信号流 <code>POST /api/v1/market/signals</code></td><td style="padding:8px 16px;white-space:nowrap"><code>1</code></td><td style="padding:8px 16px;white-space:nowrap">30s 内 0 次</td><td style="padding:8px 16px;white-space:nowrap">21 种信号</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">钱包 <code>POST /api/v1/wallet/{action}</code></td><td style="padding:8px 16px;white-space:nowrap"><code>2 / 1</code></td><td style="padding:8px 16px;white-space:nowrap">30s 内 0 次</td><td style="padding:8px 16px;white-space:nowrap">profile 2；其余各 1</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">CA 舆情 <code>POST /api/v1/twitter/sentiment</code></td><td style="padding:8px 16px;white-space:nowrap"><code>10</code></td><td style="padding:8px 16px;white-space:nowrap">600s 内 0 次</td><td style="padding:8px 16px;white-space:nowrap">搜索 + AI 分析</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">推特 <code>POST /api/v1/twitter/{action}</code></td><td style="padding:8px 16px;white-space:nowrap"><code>5</code></td><td style="padding:8px 16px;white-space:nowrap">120s 内 0 次</td><td style="padding:8px 16px;white-space:nowrap">12 端点统一；翻页每页 5</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">翻译 <code>POST /api/v1/translate/{action}</code></td><td style="padding:8px 16px;white-space:nowrap"><code>3</code></td><td style="padding:8px 16px;white-space:nowrap">300s 内 0 次</td><td style="padding:8px 16px;white-space:nowrap">中文输入免调</td></tr>
+    <tr><td style="padding:8px 16px;white-space:nowrap">Bot <code>/checkX</code> · <code>/check</code></td><td style="padding:8px 16px;white-space:nowrap"><code>4 起</code></td><td style="padding:8px 16px;white-space:nowrap">—</td><td style="padding:8px 16px;white-space:nowrap">链上 4；含推特/翻译按实际叠加</td></tr>
+  </tbody>
+</table>
 
 **说明细节**
 
