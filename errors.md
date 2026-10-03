@@ -40,7 +40,7 @@ Composite endpoints (aggregation / sentiment) return two meta-fields on every re
 
 - `data_delay_sec` — how stale the served data is (0 = fresh; cache-hit age on hits).
 - `degraded_sources` — the upstream sources that were down while assembling this response
-  (`aggregate` / `security` / `holders` / `traders` / `twitter` / `chain_rpc` / `ai`; `[]` = all healthy).
+  (`token` / `security` / `holders` / `traders` / `twitter` / `chain_rpc` / `ai`; `[]` = all healthy).
 
 A `null` field means its source is unavailable — that is the signal, not an anomaly. See
 [sla.md](sla.md) for the full policy (maintenance windows, refunds).
@@ -91,7 +91,7 @@ A `null` field means its source is unavailable — that is the signal, not an an
 复合端点（聚合 / 舆情）每次响应携带两个元字段：
 
 - `data_delay_sec`——返回数据的陈旧秒数（0 = 新鲜；缓存命中时为缓存年龄）。
-- `degraded_sources`——拼装本次响应时不可用的上游源（`aggregate` / `security` / `holders` / `traders` / `twitter` / `chain_rpc` / `ai`；`[]` = 全部健康）。
+- `degraded_sources`——拼装本次响应时不可用的数据维度（`token` / `security` / `holders` / `traders` / `twitter` / `chain_rpc` / `ai`；`[]` = 全部健康）。
 
 字段 `null` 即对应源不可用——这是信号，不是异常。完整策略（维护窗口、返还规则）见 [sla.md](sla.md)。
 

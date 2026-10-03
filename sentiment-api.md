@@ -56,7 +56,7 @@ Errors: bad CA format → `400` · not a token / unavailable → `404` · insuff
     <tr><td style="padding:6px 14px"><code>top_tweets</code></td><td style="padding:6px 14px">array</td><td style="padding:6px 14px">Up to 5 items; <code>text</code> is clean (CA and links stripped server-side), <code>url</code> links to the original X post</td></tr>
     <tr><td style="padding:6px 14px"><code>ai_text</code></td><td style="padding:6px 14px">string</td><td style="padding:6px 14px">Heat rating + one-line reason + ≤80-char summary + up to 3 key signals</td></tr>
     <tr><td style="padding:6px 14px"><code>data_delay_sec</code></td><td style="padding:6px 14px">int</td><td style="padding:6px 14px">Data staleness in seconds (0 = fresh) — see <a href="sla.md">sla.md</a></td></tr>
-    <tr><td style="padding:6px 14px"><code>degraded_sources</code></td><td style="padding:6px 14px">string[]</td><td style="padding:6px 14px">Sources down while assembling (<code>twitter</code> / <code>aggregate</code> / <code>ai</code>)</td></tr>
+    <tr><td style="padding:6px 14px"><code>degraded_sources</code></td><td style="padding:6px 14px">string[]</td><td style="padding:6px 14px">Data dimensions down while assembling (<code>twitter</code> / <code>token</code> / <code>ai</code>)</td></tr>
   </tbody>
 </table>
 
@@ -119,7 +119,7 @@ data. Thresholds are configurable server-side.
     <tr><td style="padding:6px 14px"><code>top_tweets</code></td><td style="padding:6px 14px">array</td><td style="padding:6px 14px">最多 5 条；<code>text</code> 已净化（服务端去除 CA 与链接），<code>url</code> 直达 X 原帖</td></tr>
     <tr><td style="padding:6px 14px"><code>ai_text</code></td><td style="padding:6px 14px">string</td><td style="padding:6px 14px">热度评级 + 一句话理由 + ≤80 字摘要 + 至多 3 条关键信号</td></tr>
     <tr><td style="padding:6px 14px"><code>data_delay_sec</code></td><td style="padding:6px 14px">int</td><td style="padding:6px 14px">数据陈旧秒数（0 = 新鲜）——见 <a href="sla.md">sla.md</a></td></tr>
-    <tr><td style="padding:6px 14px"><code>degraded_sources</code></td><td style="padding:6px 14px">string[]</td><td style="padding:6px 14px">拼装时不可用的源（<code>twitter</code> / <code>aggregate</code> / <code>ai</code>）</td></tr>
+    <tr><td style="padding:6px 14px"><code>degraded_sources</code></td><td style="padding:6px 14px">string[]</td><td style="padding:6px 14px">拼装时不可用的数据维度（<code>twitter</code> / <code>token</code> / <code>ai</code>）</td></tr>
   </tbody>
 </table>
 

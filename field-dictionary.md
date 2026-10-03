@@ -57,7 +57,7 @@ canonical field sets of each endpoint family.
 ### 元信息（SLA）
 
 `data_delay_sec` int — 返回数据的陈旧秒数（0 = 新鲜；缓存命中时为缓存年龄）·
-`degraded_sources` string[] — 拼装时不可用的上游源（`aggregate`/`security`/`holders`/`traders`/`twitter`/`chain_rpc`/`ai`，`[]` = 全部健康）。完整策略见 [sla.md](sla.md)。
+`degraded_sources` string[] — 拼装时不可用的数据维度（`token`/`security`/`holders`/`traders`/`twitter`/`chain_rpc`/`ai`，`[]` = 全部健康）。完整策略见 [sla.md](sla.md)。
 
 ### `rpc` 段（security 分类附带 · 链上独立核验）
 
