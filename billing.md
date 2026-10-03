@@ -11,15 +11,22 @@ already consumed); insufficient balance returns **429**.
 
 | Endpoint | Per call | Cache hit | Notes |
 |---|---|---|---|
-| Token aggregation `POST /api/v1/aggregation/token` | `2+` | 0 within 10s | `basic` 1 + `security` 1 (`structure` free); +1 each for `holders` / `social`, `traders` +2; field pruning never skips the base layer |
-| Listings `POST /api/v1/token/trending` · `hot` | `1` | 0 within 120s | Trending / hot, one data fetch |
-| Trade stream `POST /api/v1/track/trades` | `1` | 0 within 15s | `smartmoney` / `kol`, 1 each |
-| Signal stream `POST /api/v1/market/signals` | `1` | 0 within 30s | 21 signal types, includes a trigger-time snapshot |
-| Wallet `POST /api/v1/wallet/{action}` | `2 / 1` | 0 within 30s | `profile` = stats + profits (2); `stats` / `profits` / `activity` / `created` / `balance` = 1 |
-| CA sentiment `POST /api/v1/twitter/sentiment` | `10` | 0 within 600s | Search + AI analysis, billed separately |
-| Twitter `POST /api/v1/twitter/{action}` | `5` | 0 within 120s | All 12 endpoints cost 5; each pagination page bills 5 |
-| Translate `POST /api/v1/translate/{action}` | `3` | 0 within 300s | `translate` / `summarize` 3 each; Chinese input skips the AI call and is free |
-| Bot `/checkX` · `/check` | `4+` | — | 4 on-chain credits; +Twitter / translate as actually used; in-group bills the owner, private is self-funded |
+| Token aggregation `POST /api/v1/aggregation/token` | `2+` | 0 (10s) | basic 1 + security 1; structure free |
+| Listings `POST /api/v1/token/trending` · `hot` | `1` | 0 (120s) | — |
+| Trade stream `POST /api/v1/track/trades` | `1` | 0 (15s) | smartmoney / kol |
+| Signal stream `POST /api/v1/market/signals` | `1` | 0 (30s) | 21 signal types |
+| Wallet `POST /api/v1/wallet/{action}` | `2 / 1` | 0 (30s) | profile 2; others 1 |
+| CA sentiment `POST /api/v1/twitter/sentiment` | `10` | 0 (600s) | search + AI |
+| Twitter `POST /api/v1/twitter/{action}` | `5` | 0 (120s) | 12 endpoints; pagination 5/page |
+| Translate `POST /api/v1/translate/{action}` | `3` | 0 (300s) | Chinese input free |
+| Bot `/checkX` · `/check` | `4+` | — | on-chain 4; +twitter/translate |
+
+**Notes detail**
+
+- **Token aggregation** — `holders` / `social` add +1 each, `traders` +2; field pruning never skips the base layer.
+- **Twitter** — every pagination page bills 5 (a different `cursor` is a new request).
+- **Translate** — Chinese input returns as-is and deducts 0 (`ai_called: false`).
+- **Bot** — in-group `/checkX` bills the group owner; private `/check` is self-funded.
 
 ## Rules
 
@@ -46,15 +53,22 @@ already consumed); insufficient balance returns **429**.
 
 | 接口 | 每次扣次 | 缓存命中 | 说明 |
 |---|---|---|---|
-| 代币聚合 `POST /api/v1/aggregation/token` | `2 起` | 10s 内 0 次 | `basic` 1 + `security` 1（`structure` 免费）；加 `holders` / `social` 各 +1、`traders` +2；字段裁剪不省基础层 |
-| 榜单 `POST /api/v1/token/trending` · `hot` | `1` | 120s 内 0 次 | 趋势 / 热门，一次数据获取 |
-| 交易流 `POST /api/v1/track/trades` | `1` | 15s 内 0 次 | `smartmoney` / `kol` 各 1 |
-| 信号流 `POST /api/v1/market/signals` | `1` | 30s 内 0 次 | 21 种信号，含触发时刻快照 |
-| 钱包 `POST /api/v1/wallet/{action}` | `2 / 1` | 30s 内 0 次 | `profile` = stats + profits（2）；`stats` / `profits` / `activity` / `created` / `balance` 各 1 |
-| CA 舆情 `POST /api/v1/twitter/sentiment` | `10` | 600s 内 0 次 | 搜索 + AI 分析，独立计费 |
-| 推特 `POST /api/v1/twitter/{action}` | `5` | 120s 内 0 次 | 12 端点统一 5；翻页每页独立计费 5 |
-| 翻译 `POST /api/v1/translate/{action}` | `3` | 300s 内 0 次 | `translate` / `summarize` 各 3；中文输入免调 0 次 |
-| Bot `/checkX` · `/check` | `4 起` | — | 链上数据 4 次；含推特 / 翻译按实际叠加；群内扣群主、私聊自费 |
+| 代币聚合 `POST /api/v1/aggregation/token` | `2 起` | 10s 内 0 次 | basic 1 + security 1；structure 免费 |
+| 榜单 `POST /api/v1/token/trending` · `hot` | `1` | 120s 内 0 次 | — |
+| 交易流 `POST /api/v1/track/trades` | `1` | 15s 内 0 次 | smartmoney / kol |
+| 信号流 `POST /api/v1/market/signals` | `1` | 30s 内 0 次 | 21 种信号 |
+| 钱包 `POST /api/v1/wallet/{action}` | `2 / 1` | 30s 内 0 次 | profile 2；其余各 1 |
+| CA 舆情 `POST /api/v1/twitter/sentiment` | `10` | 600s 内 0 次 | 搜索 + AI 分析 |
+| 推特 `POST /api/v1/twitter/{action}` | `5` | 120s 内 0 次 | 12 端点统一；翻页每页 5 |
+| 翻译 `POST /api/v1/translate/{action}` | `3` | 300s 内 0 次 | 中文输入免调 |
+| Bot `/checkX` · `/check` | `4 起` | — | 链上 4；含推特/翻译按实际叠加 |
+
+**说明细节**
+
+- **代币聚合**——加 `holders` / `social` 各 +1、`traders` +2；字段裁剪不省基础层。
+- **推特**——翻页每页独立计费 5（不同 `cursor` = 新请求）。
+- **翻译**——中文输入原样返回、扣 0 次（`ai_called: false`）。
+- **Bot**——群内 `/checkX` 扣群主；私聊 `/check` 个人自费。
 
 ### 规则
 
