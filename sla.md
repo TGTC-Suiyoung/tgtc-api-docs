@@ -1,4 +1,4 @@
-# Service Level — Best Effort, Honest
+# Service Level — Honest Commitments
 
 **TGTC sells a data contract, not an uptime promise.** This page is the honest version of an
 SLA: what we commit to, how degradation is visible, when maintenance happens, and how billing
@@ -20,7 +20,7 @@ disputes are resolved.
 - **What this means in practice:** the service can be slow or briefly down; it will never
   pretend to be healthy when it isn't, and it will never refuse to own a billing mistake.
 
-## 2. Degradation markers — "down but not pretending"
+## 2. Degradation markers — transparent by design
 
 Every composite response (aggregation, sentiment) carries two meta-fields:
 
@@ -79,7 +79,7 @@ Disputes are reviewed against the call log; verified refunds are credited back t
   4. 计费错误**退**（见下）。
 - **人话**：服务可能慢、可能短暂不可用；但**绝不假装正常，绝不拒认计费错误**。
 
-### 2. 降级标记 —— 「挂了不假装正常」
+### 2. 降级标记 —— 状态透明可见
 
 所有复合端点（聚合、舆情）响应携带两个元字段：
 
