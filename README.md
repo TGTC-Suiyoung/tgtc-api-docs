@@ -32,6 +32,7 @@ programs. This repo is the open, versioned contract behind the live docs at
     <tr><td style="padding:6px 14px"><a href="sentiment-api.md">sentiment-api.md</a></td><td style="padding:6px 14px">CA sentiment scan, dual-channel heat rating</td><td style="padding:6px 14px">✅ done</td></tr>
     <tr><td style="padding:6px 14px"><a href="field-dictionary.md">field-dictionary.md</a></td><td style="padding:6px 14px">Field-level dictionary: source, nullability, category, billing</td><td style="padding:6px 14px">✅ done</td></tr>
     <tr><td style="padding:6px 14px"><a href="errors.md">errors.md</a></td><td style="padding:6px 14px">Error codes, retry backoff</td><td style="padding:6px 14px">✅ done</td></tr>
+    <tr><td style="padding:6px 14px"><a href="sla.md">sla.md</a></td><td style="padding:6px 14px">Service level, degradation markers, maintenance, billing disputes</td><td style="padding:6px 14px">✅ done</td></tr>
     <tr><td style="padding:6px 14px"><a href="faq.md">faq.md</a></td><td style="padding:6px 14px">Frequently asked questions (contract-grade answers)</td><td style="padding:6px 14px">✅ done</td></tr>
     <tr><td style="padding:6px 14px"><a href="rate-limits.md">rate-limits.md</a></td><td style="padding:6px 14px">Scheduling tiers, burst buffer</td><td style="padding:6px 14px">✅ done</td></tr>
     <tr><td style="padding:6px 14px"><a href="changelog.md">changelog.md</a></td><td style="padding:6px 14px">API version history</td><td style="padding:6px 14px">✅ done</td></tr>
@@ -96,6 +97,7 @@ TGTC 不是共识层，也不是喊单引擎。它是 **BSC 高频 meme 场景�
     <tr><td style="padding:6px 14px"><a href="sentiment-api.md">sentiment-api.md</a></td><td style="padding:6px 14px">CA 舆情扫描、双通道热度评级</td><td style="padding:6px 14px">✅ 完成</td></tr>
     <tr><td style="padding:6px 14px"><a href="field-dictionary.md">field-dictionary.md</a></td><td style="padding:6px 14px">字段级字典：来源 / 可空 / 分类 / 扣次</td><td style="padding:6px 14px">✅ 完成</td></tr>
     <tr><td style="padding:6px 14px"><a href="errors.md">errors.md</a></td><td style="padding:6px 14px">错误码表、重试退避</td><td style="padding:6px 14px">✅ 完成</td></tr>
+    <tr><td style="padding:6px 14px"><a href="sla.md">sla.md</a></td><td style="padding:6px 14px">服务承诺、降级标记、维护窗口、计费申诉</td><td style="padding:6px 14px">✅ 完成</td></tr>
     <tr><td style="padding:6px 14px"><a href="faq.md">faq.md</a></td><td style="padding:6px 14px">常见问题（契约级回答）</td><td style="padding:6px 14px">✅ 完成</td></tr>
     <tr><td style="padding:6px 14px"><a href="rate-limits.md">rate-limits.md</a></td><td style="padding:6px 14px">调度等级、突发缓冲</td><td style="padding:6px 14px">✅ 完成</td></tr>
     <tr><td style="padding:6px 14px"><a href="changelog.md">changelog.md</a></td><td style="padding:6px 14px">API 版本历史</td><td style="padding:6px 14px">✅ 完成</td></tr>

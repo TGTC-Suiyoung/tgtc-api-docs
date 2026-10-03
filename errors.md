@@ -18,7 +18,7 @@ the body is a `{"detail": "..."}` message for humans.
     <tr><td style="padding:6px 14px"><code>404</code></td><td style="padding:6px 14px">Not found — token doesn't exist / deleted tweet / unknown user / not a token</td><td style="padding:6px 14px">no</td><td style="padding:6px 14px">The resource doesn't exist; verify the address</td></tr>
     <tr><td style="padding:6px 14px"><code>422</code></td><td style="padding:6px 14px">Validation failure — missing param, unknown <code>action</code> / <code>field</code>, over-length text, category conflict</td><td style="padding:6px 14px"><b>no</b></td><td style="padding:6px 14px">Fix the request</td></tr>
     <tr><td style="padding:6px 14px"><code>429</code></td><td style="padding:6px 14px"><b>Insufficient balance</b> (not rate limiting)</td><td style="padding:6px 14px">no</td><td style="padding:6px 14px">Top up; recovers automatically</td></tr>
-    <tr><td style="padding:6px 14px"><code>500</code></td><td style="padding:6px 14px">Upstream data fetch failed (timeout / upstream error)</td><td style="padding:6px 14px"><b>yes</b> — not refunded</td><td style="padding:6px 14px">Retry with backoff</td></tr>
+    <tr><td style="padding:6px 14px"><code>500</code></td><td style="padding:6px 14px">Upstream data fetch failed (timeout / upstream error)</td><td style="padding:6px 14px"><b>yes</b> — refundable on a TGTC-side fault, see <a href="sla.md">sla.md</a></td><td style="padding:6px 14px">Retry with backoff; appeal if it was our fault</td></tr>
   </tbody>
 </table>
 
@@ -33,6 +33,17 @@ the body is a `{"detail": "..."}` message for humans.
 Recommended: after `429` (balance) or `500`, wait `1s → 2s → 4s` (cap 30s), at most **3
 retries**. A different pagination `cursor` is a different request — never cache-misses
 retried blindly; just re-issue with the new cursor.
+
+## Degradation — never pretend to be healthy
+
+Composite endpoints (aggregation / sentiment) return two meta-fields on every response:
+
+- `data_delay_sec` — how stale the served data is (0 = fresh; cache-hit age on hits).
+- `degraded_sources` — the upstream sources that were down while assembling this response
+  (`aggregate` / `security` / `holders` / `traders` / `twitter` / `chain_rpc` / `ai`; `[]` = all healthy).
+
+A `null` field means its source is unavailable — that is the signal, not an anomaly. See
+[sla.md](sla.md) for the full policy (maintenance windows, refunds).
 
 ## Headers every response carries
 
@@ -61,7 +72,7 @@ retried blindly; just re-issue with the new cursor.
     <tr><td style="padding:6px 14px"><code>404</code></td><td style="padding:6px 14px">数据不存在（代币不存在 / 推文已删 / 用户不存在 / 非代币）</td><td style="padding:6px 14px">否</td><td style="padding:6px 14px">核对地址是否真实存在</td></tr>
     <tr><td style="padding:6px 14px"><code>422</code></td><td style="padding:6px 14px">参数校验失败（缺参 / 未知 action·field / 超长 / 类别冲突）</td><td style="padding:6px 14px"><b>否</b></td><td style="padding:6px 14px">修正请求</td></tr>
     <tr><td style="padding:6px 14px"><code>429</code></td><td style="padding:6px 14px"><b>余额不足</b>（不是限流）</td><td style="padding:6px 14px">否</td><td style="padding:6px 14px">充值后自动恢复</td></tr>
-    <tr><td style="padding:6px 14px"><code>500</code></td><td style="padding:6px 14px">上游数据获取失败（超时 / 上游异常）</td><td style="padding:6px 14px"><b>是</b>——已扣不退</td><td style="padding:6px 14px">按退避重试</td></tr>
+    <tr><td style="padding:6px 14px"><code>500</code></td><td style="padding:6px 14px">上游数据获取失败（超时 / 上游异常）</td><td style="padding:6px 14px"><b>是</b>——我方故障可退（见 <a href="sla.md">sla.md</a>）</td><td style="padding:6px 14px">按退避重试；我方故障可申诉返还</td></tr>
   </tbody>
 </table>
 
@@ -74,6 +85,15 @@ retried blindly; just re-issue with the new cursor.
 
 建议：遇到 `429`（余额）或 `500` 后等待 `1s → 2s → 4s`（上限 30s），最多 **3 次**。翻页换
 `cursor` 是新的请求——不要盲目重试旧参数，直接用新 cursor 重发。
+
+### 降级说明 —— 挂了不假装正常
+
+复合端点（聚合 / 舆情）每次响应携带两个元字段：
+
+- `data_delay_sec`——返回数据的陈旧秒数（0 = 新鲜；缓存命中时为缓存年龄）。
+- `degraded_sources`——拼装本次响应时不可用的上游源（`aggregate` / `security` / `holders` / `traders` / `twitter` / `chain_rpc` / `ai`；`[]` = 全部健康）。
+
+字段 `null` 即对应源不可用——这是信号，不是异常。完整策略（维护窗口、返还规则）见 [sla.md](sla.md)。
 
 ### 每次响应都带的头
 

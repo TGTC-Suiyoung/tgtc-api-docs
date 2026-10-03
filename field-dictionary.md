@@ -54,6 +54,11 @@ canonical field sets of each endpoint family.
 
 `circulating_supply` · `total_supply` · `max_supply`
 
+### 元信息（SLA）
+
+`data_delay_sec` int — 返回数据的陈旧秒数（0 = 新鲜；缓存命中时为缓存年龄）·
+`degraded_sources` string[] — 拼装时不可用的上游源（`aggregate`/`security`/`holders`/`traders`/`twitter`/`chain_rpc`/`ai`，`[]` = 全部健康）。完整策略见 [sla.md](sla.md)。
+
 ### `rpc` 段（security 分类附带 · 链上独立核验）
 
 | Field | Type | Meaning |
@@ -189,6 +194,7 @@ trending 无涨跌幅 / ATH 市值 / 热榜排名；hot 无净买入 / 毕业时
 **发行/时间线**：`created_at` · `opened_at` · `migrated_at` · `age_hours` · `launchpad` · `launchpad_progress` · `creator_address` · `community_takeover`
 
 **社交**：`twitter`（纯句柄）· `website` · `telegram`　**供应**：`circulating_supply` · `total_supply` · `max_supply`
+**元信息（SLA）**：`data_delay_sec`（数据陈旧秒数，0 = 新鲜）· `degraded_sources`（降级源清单）——见 [sla.md](sla.md)。
 
 **rpc 段**（security 附带）：`mint_renounced_rpc` · `lp_burned_rpc` · `honeypot_rpc` · `price_rpc`——链上独立核验，**不是审计级保证**。
 
