@@ -90,7 +90,7 @@ is_automated / automated_by / pinned_tweet_ids / website`
 ### 通用参数
 
 `username` / `user_id`（用户类动作至少其一）、`query`（搜索词）、`tweet_id` / `tweet_ids`（单条/批量详情）、
-`count`（1~100）、`cursor`（翻页——新 cursor = **新请求**，5 次、不命中缓存）、`include_replies`（user.tweets）、`sort`（tweet.search）。
+`count`（1~100）、`cursor`（翻页——新 cursor = **新请求**，独立扣次：tweet.search 高级搜索 20 次、其余 5 次；不命中缓存）、`include_replies`（user.tweets）、`sort`（tweet.search）。
 
 ### 翻页成本警告
 
